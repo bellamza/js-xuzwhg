@@ -108,13 +108,13 @@ function animate() {
   //detect coilsion
 
   if (
-    PlayerSnoBlob.position.x + 10 >= rival.position.x ||
+    PlayerSnoBlob.position.x + 32 >= rival.position.x ||
     (PlayerSnoBlob.position.x <= rival.position.x + rival.width &&
       PlayerSnoBlob.position.y >= rival.position.y)
   ) {
-    console.log('Player-hit');
-    console.log(pHealth);
-    pHealth -= 40;
+    // console.log('Player-hit');
+    // console.log(pHealth);
+    pHealth -= 45;
     document.getElementById('enemyHealth').style.width =
       pHealth.toString() + 'px';
 
@@ -128,19 +128,22 @@ function animate() {
   }
 
   if (
-    RivalSnoBlob.position.x + 10 >= player.position.x ||
-    (RivalSnoBlob.position.x + 10 <= player.position.x + player.width &&
+    RivalSnoBlob.position.x + 32 >= player.position.x ||
+    (RivalSnoBlob.position.x + 32 <= player.position.x + player.width &&
       RivalSnoBlob.position.y >= player.position.y)
   ) {
     console.log('rival-hit');
 
-    rHealth -= 40;
+    rHealth -= 45;
     document.getElementById('playerHealth').style.width =
       rHealth.toString() + 'px';
-    RivalSnoBlob.position.x = -30;
-    RivalSnoBlob.position.y = -30;
 
-    RivalSnoBlob.velocity.x = 0;
+    if (RivalSnoBlob.velocity.x < 0) {
+      RivalSnoBlob.position.x = 3000;
+      RivalSnoBlob.position.y = 300;
+      RivalSnoBlob.velocity.x = 0;
+    }
+    
   }
 }
 animate();
