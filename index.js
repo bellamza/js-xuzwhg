@@ -143,7 +143,18 @@ function animate() {
       RivalSnoBlob.position.y = 300;
       RivalSnoBlob.velocity.x = 0;
     }
-    
+  }
+  if (rHealth < 0) {
+    // winner is p
+    document.querySelector('#displayText').style.display = 'flex';
+
+    document.querySelector('#displayText').innerHTML = 'Rival Wins';
+  }
+  if (pHealth < 0) {
+    // winner is r
+    document.querySelector('#displayText').style.display = 'flex';
+
+    document.querySelector('#displayText').innerHTML = 'Player Wins';
   }
 }
 animate();
